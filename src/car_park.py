@@ -2,15 +2,17 @@
 
 from sensor import Sensor
 from display import Display
+from pathlib import Path
 
 
 class CarPark:
-    def __init__(self, location, capacity, plates=None, sensors=None, displays=None):
+    def __init__(self, location, capacity, log_file=Path("log.txt"), plates=None, sensors=None, displays=None):
         self.location = location
         self.capacity = capacity
         self.plates = plates or []
         self.sensors = sensors or []
         self.displays = displays or []
+        self.log_file = log_file
 
     def __str__(self):
         # Return a string that contain the car park's location and capacity
@@ -18,7 +20,7 @@ class CarPark:
 
     def register(self, component):
         if not isinstance(component, (Sensor, Display)):
-            raise TypeError("Object must be a Sensor or Display")
+            raise TypeError("Not a Sensor or Display")
         elif isinstance(component, Sensor):
             self.sensors.append(component)
         elif isinstance(component, Display):
