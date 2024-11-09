@@ -39,5 +39,5 @@ class ExitSensor(Sensor):
         self.car_park.add_car(plate)
         print(f"Outgoing 🚘 vehicle detected. Plate: {plate}")
 
-    
+
 
