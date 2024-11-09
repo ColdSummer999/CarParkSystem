@@ -13,8 +13,10 @@ Key Components:
 
 ## Documentation
 
-| Class Name | Attributes                                     | Methods |
-   |------------|------------------------------------------------|---------|
-| CarPark    | location, capacitty, plates, sensor, displays  |         |
-| Sensor     |                                                |         |
-| Display    |                                                |         |
+| Class Name | Attributes                                    | Methods |
+   |------------|-----------------------------------------------|---------|
+| CarPark    | location, capacity, plates, sensor, displays  |         |
+| Sensor     |                                               |         |
+| Display    |                                               |         |
+
+

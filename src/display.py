@@ -7,4 +7,5 @@ class Display:
         self.car_park = car_park
 
     def __str__(self):
+        # Print id and message.
         return f"Display {self.id}: {self.message}"
