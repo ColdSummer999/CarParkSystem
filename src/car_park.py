@@ -71,3 +71,7 @@ class CarPark:
         with config_file.open() as f:
             config = json.load(f)
         return cls(config["location"], config["capacity"], log_file=config["log_file"])
+
+    def print_plates(self):
+        for plate in self.plates:
+            print(plate)

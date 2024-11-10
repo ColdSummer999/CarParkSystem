@@ -2,13 +2,6 @@ from car_park import CarPark
 from sensor import EntrySensor, ExitSensor
 from display import Display
 
-# TODO: create a car park object with the location moondalup, capacity 100, and log_file "moondalup.txt"
-# TODO: create an entry sensor object with id 1, is_active True, and car_park car_park
-# TODO: create an exit sensor object with id 2, is_active True, and car_park car_park
-# TODO: create a display object with id 1, message "Welcome to Moondalup", is_on True, and car_park car_park
-# TODO: drive 10 cars into the car park (must be triggered via the sensor - NOT by calling car_park.add_car directly)
-# TODO: drive 2 cars out of the car park (must be triggered via the sensor - NOT by calling car_park.remove_car directly)
-
 """
     Code to simulate car park system.
         * Create car park object.
@@ -29,8 +22,7 @@ if __name__ == '__main__':
     moon_land_car_park = CarPark("moondalup", 100, "moondalup.txt")
     moon_land_entry_sensor = EntrySensor(1, True, moon_land_car_park)
     moon_land_exit_sensor = ExitSensor(2, True, moon_land_car_park)
-    moon_land_display = Display(1, moon_land_car_park, "Welcome to Moondalup", True)
-
+    moon_land_displays = []
     """
         moon_land_car_park.write_config()
         another_moon_land = CarPark.from_config()
@@ -40,7 +32,12 @@ if __name__ == '__main__':
     # Drive 10 cars into the car park
     for car in range(10):
         moon_land_entry_sensor.detect_vehicle(f"TEST-PLATE-{car}")
+        moon_land_displays.append(Display(car, moon_land_car_park, f"Welcome to Moondalup TEST-PLATE-{car}", True))
+        print(moon_land_displays[car])
 
     # 2 cars are leaving the car park
     for car in range(2):
         moon_land_exit_sensor.detect_vehicle(f"TEST-PLATE-{car}")
+        moon_land_displays[car].update({"message": "Goodbye!"})
+        del moon_land_displays[car]
+
