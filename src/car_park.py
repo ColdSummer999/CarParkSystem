@@ -75,3 +75,13 @@ class CarPark:
     def print_plates(self):
         for plate in self.plates:
             print(plate)
+
+    def add_display(self, display):
+        self.displays.append(display)
+        self.update_displays()
+
+    def remove_display(self, index):
+        del self.displays[index]
+
+    def add_sensor(self, sensor):
+        self.sensors.append(sensor)

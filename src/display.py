@@ -1,6 +1,6 @@
 
 class Display:
-    def __init__(self, id, car_park, message="", is_on=False):
+    def __init__(self, id, car_park, message={}, is_on=False):
         self.id = id
         self.message = message
         self.is_on = is_on
@@ -8,9 +8,15 @@ class Display:
 
     def __str__(self):
         # Print id and message.
-        return f"Display {self.id}: {self.message}"
+        available_bays = self.message["available bays"]
+        message = self.message["message"]
+        temperature = self.message["temperature"]
+        return f"Display {self.id}: {message} {available_bays} bays available. {temperature} degrees Celsius"
 
     def update(self, data):
-        self.message = data.get("message")
+        self.message = {**self.message, **data}
+    """
         for key, value in data.items():
             print(f"{key}: {value}")
+    """
+

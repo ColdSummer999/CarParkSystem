@@ -22,7 +22,9 @@ if __name__ == '__main__':
     moon_land_car_park = CarPark("moondalup", 100, "moondalup.txt")
     moon_land_entry_sensor = EntrySensor(1, True, moon_land_car_park)
     moon_land_exit_sensor = ExitSensor(2, True, moon_land_car_park)
-    moon_land_displays = []
+    moon_land_car_park.add_sensor(moon_land_entry_sensor)
+    moon_land_car_park.add_sensor(moon_land_exit_sensor)
+
     """
         moon_land_car_park.write_config()
         another_moon_land = CarPark.from_config()
@@ -32,12 +34,14 @@ if __name__ == '__main__':
     # Drive 10 cars into the car park
     for car in range(10):
         moon_land_entry_sensor.detect_vehicle(f"TEST-PLATE-{car}")
-        moon_land_displays.append(Display(car, moon_land_car_park, f"Welcome to Moondalup TEST-PLATE-{car}", True))
-        print(moon_land_displays[car])
+        moon_land_car_park.add_display(Display(car, moon_land_car_park,
+                                               {"message": "Welcome to moon land car park."}, True))
+        print(moon_land_car_park.displays[car])
 
     # 2 cars are leaving the car park
     for car in range(2):
         moon_land_exit_sensor.detect_vehicle(f"TEST-PLATE-{car}")
-        moon_land_displays[car].update({"message": "Goodbye!"})
-        del moon_land_displays[car]
+        moon_land_car_park.displays[car].update({"message": "Goodbye!"})
+        print(moon_land_car_park.displays[car])
+        moon_land_car_park.remove_display(car)
 
