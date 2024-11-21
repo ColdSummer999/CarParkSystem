@@ -18,10 +18,8 @@ class Sensor(ABC):
         pass
 
     def detect_vehicle(self, plate=None):
-        """
-            Function that detect incoming vehicle, for now if vehicle return a plate, use the plate, otherwise
-            create a random one from our private method _scan_plate
-        """
+        # Function that detect incoming vehicle, for now if vehicle return a plate, use the plate, otherwise
+        # create a random one from our private method _scan_plate
         if plate is None:
             plate = self._scan_plate()
         self.plate = plate

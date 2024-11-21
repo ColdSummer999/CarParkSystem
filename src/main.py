@@ -2,20 +2,6 @@ from car_park import CarPark
 from sensor import EntrySensor, ExitSensor
 from display import Display
 
-"""
-    Code to simulate car park system.
-        * Create car park object.
-        * Create entry and exit sensor and display object.
-        * Drive 10 cars into the car park which gets triggered via the sensor
-        * Drive 2 cars out of the car park
-
-    The CarPark class supports saving the setting into a config file.
-    @methods:
-        CarPark.write_config()
-            to save setting to config file
-        CarPark.read_config()
-            to read config file
-"""
 
 if __name__ == '__main__':
     # Construct the car park, sensors and display
@@ -24,12 +10,6 @@ if __name__ == '__main__':
     moon_land_exit_sensor = ExitSensor(2, True, moon_land_car_park)
     moon_land_car_park.add_sensor(moon_land_entry_sensor)
     moon_land_car_park.add_sensor(moon_land_exit_sensor)
-
-    """
-        moon_land_car_park.write_config()
-        another_moon_land = CarPark.from_config()
-        print(another_moon_land.capacity)
-    """
 
     # Drive 10 cars into the car park
     for car in range(10):
